@@ -4,6 +4,7 @@ import { onErrorCaptured, onMounted } from '../src/apiLifecycle'
 import { createComponent } from '../src/apiCreateComponent'
 import { makeRender } from './_utils'
 import { template } from '../src/dom/template'
+import { watchEffect } from '../src/apiWatch'
 
 const define = makeRender()
 
