@@ -4,9 +4,6 @@ import { onErrorCaptured, onMounted } from '../src/apiLifecycle'
 import { createComponent } from '../src/apiCreateComponent'
 import { makeRender } from './_utils'
 import { template } from '../src/dom/template'
-import { watch, watchEffect } from '../src/apiWatch'
-import { nextTick } from '../src/scheduler'
-import { ref } from '@vue/reactivity'
 
 const define = makeRender()
 
@@ -201,6 +198,12 @@ describe('error handling', () => {
     expect(fn).toHaveBeenCalledWith(err, 'render function')
   })
 
+  test('in function ref', () => {
+    const err = new Error('foo')
+    const ref = () => {
+      throw err
+    }
+    const fn = vi.fn()
   test('in function ref', () => {
     const err = new Error('foo')
     const ref = () => {
